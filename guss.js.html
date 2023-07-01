@@ -1,0 +1,42 @@
+<html>
+    <HEAD>
+
+    </HEAD>
+    <body>
+        // Generate a random number between 1 and 100
+const targetNumber = Math.floor(Math.random() * 100) + 1;
+
+// Initialize the number of attempts
+let attempts = 0;
+
+// Function to handle the user's guess
+function guessNumber() {
+  // Parse the input value to an integer
+  const guess = parseInt(document.getElementById("guessInput").value);
+
+  // Check if the guess is correct
+  if (guess === targetNumber) {
+    // Increment the number of attempts
+    attempts++;
+
+    // Display the success message
+    document.getElementById("message").textContent = `Congratulations! You guessed the number in ${attempts} attempts.`;
+
+    // Disable the input and button after a successful guess
+    document.getElementById("guessInput").disabled = true;
+    document.getElementById("submitBtn").disabled = true;
+  } else {
+    // Increment the number of attempts
+    attempts++;
+
+    // Display a hint message
+    const message = guess < targetNumber ? "Try a higher number." : "Try a lower number.";
+    document.getElementById("message").textContent = message;
+  }
+}
+
+// Event listener for the submit button click
+document.getElementById("submitBtn").addEventListener("click", guessNumber);
+
+        
+    </body></html>
